@@ -21,11 +21,11 @@ function Header(props) {
   }
 
   const handleRedirectToApp = () => {
-    window?.ReactNativeWebView?.goBack()
+    window?.ReactNativeWebView?.goBack?.()
     const event = {
       type: 'closeWebView',
-      data: window?.ReactNativeWebView
     }
+    console.log('closeWebView', window?.ReactNativeWebView);
     window?.ReactNativeWebView?.postMessage(JSON.stringify(event))
   }
 
