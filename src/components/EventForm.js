@@ -18,10 +18,14 @@ function EventForm() {
     const handleSubmit = () => {
         console.log('state', state);
         const {eventName, eventAddress, eventDateTime} = state
-        if(eventName && eventAddress && eventDateTime) {
+        if(eventName?.trim() && eventAddress?.trim() && eventDateTime) {
             const event = {
                 type: 'createEvent',
-                data: state
+                data: {
+                    eventName: eventName?.trim(),
+                    eventAddress: eventAddress?.trim(),
+                    eventDateTime
+                }
             }
             window?.ReactNativeWebView?.postMessage(JSON.stringify(event))
         } else {
